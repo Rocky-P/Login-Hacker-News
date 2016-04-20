@@ -1,0 +1,62 @@
+﻿@using _3._13Routing
+@using _3._13Routing.Models
+@using LoginUser
+@model ViewModel
+
+<div class="container">
+    <h2>List of Posts by all Users of Hacker</h2>
+</div>
+
+<table class="table table-bordered table-striped table-hover" id="ptable" name="table">
+    <tr>
+        <th>Number</th>
+        <th>Details</th>
+
+    </tr>
+
+
+    @{
+        var counter = 0;
+        foreach (Link l in Model.Alllink)
+        {
+            { counter = counter + 1; }
+            <tr>
+                <td>@counter</td>
+                <td>
+                    <span style="display:block">
+                        @l.Title
+                        <a href="@l.Url">@l.Url</a>
+                    </span>
+                    @*how can i get the username, where would i populate the viewmodel user to dot the username to display*@
+                    @*<span>@l.Uploads.Count() points by user Id <a href="/home/users?userId=@l.UserId">@l.UserId</a> @Model.Date</span>*@
+                    <span>View more links posted by user Id <a href="/home/users?userId=@l.UserId">@l.UserId</a></span>
+                </td>
+
+            </tr>
+        }
+    }
+
+
+
+
+    @*<tr>
+        @foreach (Link link in Model.linksByUser)
+        {
+
+
+            <td>@(ViewBag.Counter)</td>
+            <td><a href="/home/upvote?postId=@Model.User.Id">&#9650;</a></td>
+            <td>
+
+                @*if want to show host name and populate list by host name
+                    <a href="/home/hostname?hostName=@Model.User.URLHostName">*@
+
+    @*<span style="display:block">
+                        <a href="@link.Url">@link.Url</a>
+                    </span>
+                    <span>@link.Uploads.Count() points by <a href="/home/users?userId=@Model.User.Id">@Model.User.UserName</a> <time class="timeago" datetime="@Model.Date">@Model.Date</time></span>
+                </td>
+
+            }
+        </tr>*@
+</table>

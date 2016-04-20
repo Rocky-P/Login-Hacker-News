@@ -1,0 +1,40 @@
+﻿@using _3._13Routing
+@using _3._13Routing.Models
+@using LoginUser
+@model ViewModel
+
+<div class="container">
+    <h2>More posts for user #@Model.UserId</h2>
+    @*if want can show by user name and not id, set user in home controller and pass thru vm*@
+    <a href="/home/index">Home</a>
+</div>
+<table class="table table-bordered table-striped table-hover" id="ptable" name="table">
+    <tr>
+        <th>Number</th>
+        <th>Details</th>
+    </tr>
+
+
+    @{
+        var counter = 0;
+        foreach (Link l in Model.linksByUser)
+        {
+            { counter = counter + 1; }
+            <tr>
+                <td>@counter</td>
+                <td>
+                    <span style="display:block">
+                        @l.Title
+                        <a href="@l.Url">@l.Url</a>
+                    </span>
+                    <span>Created on @Model.Date</span>
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>
+
+
+
